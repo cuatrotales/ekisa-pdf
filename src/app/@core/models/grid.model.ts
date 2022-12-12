@@ -34,3 +34,14 @@ export class Country {
     this.GDP_Total = 0;
   }
 }
+export class Grid {
+  public ID: number;
+  public City: string;
+  public Phone: string;
+
+  constructor() {
+    this.ID = 0;
+    this.City = '';
+    this.Phone = '';
+  }
+}

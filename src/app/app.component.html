@@ -1,9 +1,55 @@
-<h1>{{ title }}</h1>
-<nav>
-  <a routerLink="/">Home</a>
-  <br>
-  <a routerLink="/overview">Overview</a>
-  <br>
-  <a routerLink="/grid">DevExtreme Ekisa</a>
-</nav>
-<router-outlet></router-outlet>
+<h1>Ekisa PDF</h1>
+<dx-form [formData]="infoProvedores" #formProveedores>
+  <dxi-item itemType="group">
+    <dx-data-grid
+      [dataSource]="proveedoresGrid"
+      [showBorders]="true"
+      [hoverStateEnabled]="true"
+      [rowAlternationEnabled]="true"
+      (onCellPrepared)="onCellPrepared($event)"
+      [height]="300"
+      [columnAutoWidth]="true"
+      (onCellClick)="onSelectionChangedProveedor($event)"
+    >
+      <dxo-selection mode="single"></dxo-selection>
+      <dxi-column type="buttons">
+        <dxi-button text="Editar" [onClick]="onClickEditar"></dxi-button>
+      </dxi-column>
+      <dxi-column
+        dataField="numeroIdeProveedor"
+        caption="NIT"
+        alignment="left"
+      ></dxi-column>
+      <dxi-column
+        dataField="nombreProveedor"
+        caption="Nombre"
+        alignment="left"
+      ></dxi-column>
+      <dxi-column
+        dataField="direccionProveedor"
+        caption="Dirección"
+        alignment="left"
+      ></dxi-column>
+      <dxi-column
+        dataField="telefonoProveedor"
+        caption="Teléfono"
+        alignment="left"
+      ></dxi-column>
+      <dxi-column
+        dataField="contactoProveedor"
+        caption="Contacto"
+        alignment="left"
+      ></dxi-column>
+      <dxi-column
+        dataField="emailProveedor"
+        caption="Email"
+        alignment="left"
+      ></dxi-column>
+      <dxi-column
+        dataField="observacion"
+        caption="Observacion"
+        alignment="left"
+      ></dxi-column>
+    </dx-data-grid>
+  </dxi-item>
+</dx-form>
