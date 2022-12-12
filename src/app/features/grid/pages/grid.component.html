@@ -1,11 +1,10 @@
-<div class="container">
+<div class="container p-5">
   <dx-form [formData]="infoProvedores" #formProveedores>
     <dxi-item itemType="group" [colCount]="3" cssClass="my-3">
       <dxi-item itemType="group" [colSpan]="3" [colCount]="4">
-        <dxi-item cssClass="search-quiron" itemType="group" [colCount]="12">
+        <dxi-item cssClass="search-quiron" itemType="group">
           <dxi-item
             dataField="numeroIdeProveedor"
-            [colSpan]="11"
             [editorOptions]="{
               inputAttr: { 'data-tag-id': 'numeroIdeProveedor' },
               onValueChanged: onValueChangedNit,
@@ -15,17 +14,10 @@
           >
             <dxo-label text="NIT"></dxo-label>
           </dxi-item>
-          <dxi-item [colSpan]="1" cssClass="mt-7">
-            <div *dxTemplate>
-              <dx-button icon="find" type="default" stylingMode="text">
-              </dx-button>
-            </div>
-          </dxi-item>
         </dxi-item>
-        <dxi-item cssClass="search-quiron" itemType="group" [colCount]="12">
+        <dxi-item cssClass="search-quiron" itemType="group">
           <dxi-item
             dataField="nombreProveedor"
-            [colSpan]="11"
             [disabled]="isEditing"
             [editorOptions]="{
               inputAttr: { 'data-tag-id': 'nombreProveedor' },
@@ -35,12 +27,6 @@
             }"
           >
             <dxo-label text="Nombre"></dxo-label>
-          </dxi-item>
-          <dxi-item [colSpan]="1" cssClass="mt-7">
-            <div *dxTemplate>
-              <dx-button icon="find" type="default" stylingMode="text">
-              </dx-button>
-            </div>
           </dxi-item>
         </dxi-item>
         <dxi-item cssClass="search-quiron" itemType="group" [colCount]="12">
@@ -168,7 +154,7 @@
     </dxi-item>
     <dxi-item itemType="group" [colSpan]="4">
       <dxi-item>
-        <div *dxTemplate class="buttons buttons-modal buttons-direccion">
+        <div class="buttons buttons-modal buttons-direccion">
           <dx-button
             text="Guardar"
             icon=""

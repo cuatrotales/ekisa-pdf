@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DxFormComponent } from 'devextreme-angular';
+import { Observable } from 'rxjs';
+import { SmartService } from 'src/app/@core/services/smart.service';
+import { environment } from 'src/environments/environment';
+import { Grid } from '../shared/grid.model';
 
 @Component({
   templateUrl: './grid.component.html',
@@ -9,7 +13,7 @@ export class GridComponent implements OnInit {
   //#region atributos
 
   //model
-  proveedores: any[] = [];
+  proveedores: Grid[] = [];
 
   //
   infoProvedores: any = {};
@@ -24,8 +28,8 @@ export class GridComponent implements OnInit {
   //#endregion
 
   //#region constructor
-  // private smartService: SmartService
-  constructor() {
+
+  constructor(private smartService: SmartService) {
     //paraEditar
     this.isEditing = false;
 
@@ -54,11 +58,11 @@ export class GridComponent implements OnInit {
 
   //#region onInit
   ngOnInit(): void {
-    // this.obtenerProveedores().subscribe((proveedores) => {
-    //   if (proveedores && proveedores.length > 0) {
-    //     this.proveedoresGrid = proveedores;
-    //   }
-    // });
+    this.obtenerProveedores().subscribe((all) => {
+      if (all && all.length > 0) {
+        this.proveedoresGrid = all;
+      }
+    });
   }
   //#endregion
 
@@ -66,12 +70,12 @@ export class GridComponent implements OnInit {
 
   //Proveedores
 
-  // obtenerProveedores(): Observable<Proveedores[]> {
-  //   return this.smartService.list<Proveedores[]>({
-  //     urlRewrite: `${environment.apiOdontologia}/Proveedor/GetAll`,
-  //     mapFn: ({ result }) => result,
-  //   });
-  // }
+  obtenerProveedores(): Observable<Grid[]> {
+    return this.smartService.list<Grid[]>({
+      urlRewrite: `${environment.apiOdontologia}/Proveedor/GetAll`,
+      mapFn: ({ result }) => result,
+    });
+  }
 
   // obtenerProveedor(numeroIdeProveedor: string): Observable<Proveedores[]> {
   //   return this.smartService.list<Proveedores[]>({
